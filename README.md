@@ -1,5 +1,7 @@
 # Cycle-Webpack-Tape-boilerplate
 
+## [VIEW DEMO](http://cmdv.github.io/cycle-webpack-boilerplate/)
+
 Boilerplate for bdd / tdd / testing with Tape + Testem + Webpack + Cycle.js
 
 recompiles + re-runs test on file updates!
