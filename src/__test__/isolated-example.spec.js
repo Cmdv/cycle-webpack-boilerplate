@@ -31,6 +31,9 @@ test('Dom tests', function(t) {
   });
 
   sources.DOM.select('.bar').observable.skip(1).take(1).subscribe(function (elements) {
+
+    console.dir(elements);
+
     t.equal(Array.isArray(elements), true);
     t.equal(elements.length, 1);
     const correctElement = elements[0];
@@ -38,5 +41,6 @@ test('Dom tests', function(t) {
     t.notEqual(typeof correctElement, 'undefined');
     t.equal(correctElement.tagName, 'H2');
     t.equal(correctElement.textContent, 'Correct');
+    t.end()
   });
 });

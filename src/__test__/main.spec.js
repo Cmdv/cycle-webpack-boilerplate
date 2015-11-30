@@ -16,7 +16,7 @@ test('Main component tests', function(t) {
   function app(sources) {
     return {
       DOM: Rx.Observable.just(
-        h([Main.DOM])
+        h([Main])
       )
     };
   }
@@ -36,8 +36,7 @@ test('Main component tests', function(t) {
 
     t.notEqual(element, null);
     t.notEqual(typeof element, 'undefined');
-
-    console.log(sources)
+    console.dir(sources.DOM);
 
     t.equal(element.class, 'poop');
     t.equal(element.textContent, 'Correct');
