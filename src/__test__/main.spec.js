@@ -16,7 +16,7 @@ test('Main component tests', function(t) {
   function app(sources) {
     return {
       DOM: Rx.Observable.just(
-        h([Main])
+        h([Main.DOM])
       )
     };
   }
