@@ -32,7 +32,7 @@ test('Dom tests', function(t) {
 
   sources.DOM.select('.bar').observable.skip(1).take(1).subscribe(function (elements) {
 
-    console.dir(elements);
+    console.dir(elements[0]);
 
     t.equal(Array.isArray(elements), true);
     t.equal(elements.length, 1);

@@ -20,7 +20,6 @@ function createRouteValue(DOM, History) {
 const model = ({DOM,History,}) => {
   const childView$ = History
     .map(createRouteValue(DOM, History));
-
   return latestObj({
     routeValue: childView$
       .flatMap(value => {
@@ -43,7 +42,7 @@ const view = state$ => state$.map(
 const Content = responses => {
   const state$ = model(responses);
   const view$ = view(state$);
-
+  console.log(state$.do((a)=> console.log(a)));
   return {
     DOM: view$,
   };

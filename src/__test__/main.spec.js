@@ -26,19 +26,7 @@ test('Main component tests', function(t) {
   });
 
 
-
-  sources.DOM.select(':root').observable.skip(1).take(1).subscribe(function (root) {
-    t.equal(Array.isArray(root), true, 'the element should be an Array');
-
-    t.equal(root.length, 1, 'the length of the element should be 1' );
-
-    let element = root.querySelector('#layout')
-
-    t.notEqual(element, null);
-    t.notEqual(typeof element, 'undefined');
-    console.dir(sources.DOM);
-
-    t.equal(element.class, 'poop');
-    t.equal(element.textContent, 'Correct');
+  sources.DOM.select('.pure-g').observable.skip(1).take(1).subscribe(function (el) {
+    console.dir(el); // []
   });
 });
