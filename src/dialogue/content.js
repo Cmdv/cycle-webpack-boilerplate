@@ -42,7 +42,6 @@ const view = state$ => state$.map(
 const Content = responses => {
   const state$ = model(responses);
   const view$ = view(state$);
-  console.log(state$.do((a)=> console.log(a)));
   return {
     DOM: view$,
   };

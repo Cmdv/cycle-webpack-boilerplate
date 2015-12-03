@@ -1,3 +1,4 @@
+// Test template when wanting to test the DOM
 import test from 'tape';
 import Rx from 'rx'
 import createRenderTarget from './helper/createRenderTarget';
@@ -32,12 +33,12 @@ test('Dom tests', function(t) {
 
   sources.DOM.select('.bar').observable.skip(1).take(1).subscribe(function (elements) {
 
-    t.equal(Array.isArray(elements), true);
-    t.equal(elements.length, 1);
+    t.equal(Array.isArray(elements), true, 'subscription output is an array');
+    t.equal(elements.length, 1, 'there should only be one array');
     const correctElement = elements[0];
-    t.notEqual(correctElement, null);
-    t.notEqual(typeof correctElement, 'undefined');
-    t.equal(correctElement.tagName, 'H2');
+    t.notEqual(correctElement, null, 'the array isn\'t empty');
+    t.notEqual(typeof correctElement, 'undefined', "the array isn\'t undefined");
+    t.equal(correctElement.tagName, 'H2', '');
     t.equal(correctElement.textContent, 'Correct');
     t.end()
   });
