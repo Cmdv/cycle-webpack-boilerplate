@@ -6,9 +6,6 @@ import Main                 from '../main';
 import Cycle                from '@cycle/core';
 import {h,makeDOMDriver,mockDOMResponse} from '@cycle/dom';
 
-
-let {h2, h3, h4, div, h, makeDOMDriver} = CycleDOM;
-
 test('Main component tests', function(t) {
   t.plan(3);
   // mock the Main component and pass it the responses
@@ -16,6 +13,7 @@ test('Main component tests', function(t) {
     let requests = Main(responses)
     return requests
   }
+
   // Pass Main through our RenderTarget
   let {sinks, sources} = Cycle.run(mainComponent, {
     DOM: makeDOMDriver(createRenderTarget()),
@@ -24,7 +22,6 @@ test('Main component tests', function(t) {
       queries: true,
     }),
   });
-
   // take our sources.Dom and select a class from it then subscribe and start testing against the results
   sources.DOM.select('.pure-g').observable.skip(1).take(1).subscribe(function (el) {
 

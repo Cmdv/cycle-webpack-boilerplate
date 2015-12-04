@@ -29,7 +29,7 @@ const view = () => {
     nav('.nav', [
       ul('.nav-list', [
         li('.nav-item .link', [
-          a('.pure-button', {href: `/`}, [`Home`])
+          a('.pure-button .poo', {href: `/`}, [`Home`])
         ]),
         li('.nav-item .link', [
           a('.pure-button', {href: `/page1`}, [`Page 1`])

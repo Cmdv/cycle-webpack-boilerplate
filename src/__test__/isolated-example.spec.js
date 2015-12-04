@@ -1,12 +1,11 @@
 // Test template when wanting to test the DOM
-import test from 'tape';
-import Rx from 'rx'
-import createRenderTarget from './helper/createRenderTarget';
-
-let CycleDOM = require('@cycle/dom');
-let Cycle = require('@cycle/core');
-let {h2, h3, h4, div, makeDOMDriver} = CycleDOM;
-
+import test                 from 'tape';
+import Rx                   from 'rx'
+import createRenderTarget   from './helper/createRenderTarget';
+import {makeHistoryDriver}  from '@cycle/history';
+import Main                 from '../main';
+import Cycle                from '@cycle/core';
+import {h,makeDOMDriver,h2, h3, h4, div} from '@cycle/dom';
 
 
 test('Dom tests', function(t) {
@@ -38,8 +37,7 @@ test('Dom tests', function(t) {
     const correctElement = elements[0];
     t.notEqual(correctElement, null, 'the array isn\'t empty');
     t.notEqual(typeof correctElement, 'undefined', "the array isn\'t undefined");
-    t.equal(correctElement.tagName, 'H2', '');
+    t.equal(correctElement.tagName, 'H2', 'the tag is h2');
     t.equal(correctElement.textContent, 'Correct');
-    t.end()
   });
 });
