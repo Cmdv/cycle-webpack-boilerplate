@@ -18,12 +18,13 @@ function mainApp(responses) {
 // this is the Cycle run. first argument is our mainApp then an object:
 // DOM is the ID or class we want the cycle to render onto our page
 // History is using our makeHistoryDriver to deal with routing
-
-run(mainApp, {
+const sources = {
   DOM: makeDOMDriver('#application'),
   History: makeHistoryDriver({
     // if you want hash: false you will need to set up a server
     hash: false,
     queries: true,
   }),
-});
+};
+
+run(mainApp,sources);

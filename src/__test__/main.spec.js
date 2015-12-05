@@ -3,7 +3,7 @@ import Rx                   from 'rx'
 import createRenderTarget   from './helper/createRenderTarget';
 import {makeHistoryDriver}  from '@cycle/history';
 import Main                 from '../main';
-import Cycle                from '@cycle/core';
+import {run}                from '@cycle/core';
 import {h,makeDOMDriver,mockDOMResponse} from '@cycle/dom';
 
 test('Main component tests', function(t) {
@@ -15,7 +15,7 @@ test('Main component tests', function(t) {
   }
 
   // Pass Main through our RenderTarget
-  let {sinks, sources} = Cycle.run(mainComponent, {
+  let {sinks, sources} = run(mainComponent, {
     DOM: makeDOMDriver(createRenderTarget()),
     History: makeHistoryDriver({
       hash: false,

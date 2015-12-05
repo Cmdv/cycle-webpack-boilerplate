@@ -29,12 +29,12 @@ const view = () => {
     nav('.nav', [
       ul('.nav-list', [
         li('.nav-item .link', [
-          a('.pure-button .poo', {href: `/`}, [`Home`])
+          a('.pure-button', {href: `/`}, [`Home`])
         ]),
         li('.nav-item .link', [
           a('.pure-button', {href: `/page1`}, [`Page 1`])
         ]),
-        li('.nav-item .link', [
+        li('.nav-item .link .testlink', [
           a('.pure-button', {href: `/page2`}, [`Page 2`])
         ])
       ])
