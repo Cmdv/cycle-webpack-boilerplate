@@ -39,7 +39,8 @@ const view = state$ => state$.map(
   }
 ).distinctUntilChanged();
 
-const Content = responses => {
+const content = responses => {
+
   const state$ = model(responses);
   const view$ = view(state$);
   return {
@@ -47,5 +48,4 @@ const Content = responses => {
   };
 };
 
-export default Content;
-export {Content};
+export default content;

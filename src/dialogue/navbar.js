@@ -12,15 +12,14 @@ const intent = ({DOM}) => ({
       `touchstart`,
     ])
     .filter(filterLinks),
-})
+});
 
-const model = ({click$}, {History}) => {
+const model = ({click$}) => {
   return latestObj({
     url: click$
-      .map(getUrl)
-      .startWith(History.value.pathname),
-  })
-}
+      .map(event => event.target.href.replace(location.origin, ``))
+  }).startWith()
+};
 
 const view = () => {
   return div([
@@ -42,15 +41,13 @@ const view = () => {
 }
 
 const navbar = (responses) => {
-  const actions = intent(responses)
-  const state$ = model(actions, responses)
-  const view$ = view()
-
+  const actions = intent(responses);
+  const state$ = model(actions);
+  const view$ = view();
   return {
     DOM: view$,
     url$: extractValue(`url`, state$),
   }
-}
+};
 
-export default navbar
-export {navbar}
+export default navbar;

@@ -9,9 +9,12 @@ const view = () => {
   ])
 }
 
-const Home = () => {
+const Home = (responses) => {
+
+  console.log(responses);
 
   const view$ = Rx.Observable.just(view());
+
   return {
     DOM: view$
   }
