@@ -21,8 +21,6 @@ const view = (navbar, content) => {
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
 const main = responses => {
-  console.dir(responses);
-    const poo = responses.Poo
     const Content = content(responses)
     const Nav = navbar(responses)
 
@@ -34,7 +32,6 @@ const main = responses => {
     )
 
     return {
-        //Poo: () => responses.Poo(),
         DOM: view$,
         // .url$ are inside the nav component
         History: Nav.url$,

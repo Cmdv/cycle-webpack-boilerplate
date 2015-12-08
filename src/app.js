@@ -19,7 +19,6 @@ function mainApp(responses) {
 // DOM is the ID or class we want the cycle to render onto our page
 // History is using our makeHistoryDriver to deal with routing
 const sources = {
-  Poo: () => "poo",
   DOM: makeDOMDriver('#application'),
   History: makeHistoryDriver({
     // if you want hash: false you will need to set up a server
