@@ -1,6 +1,4 @@
-import Rx from 'rx'
 import {h, div, h1,} from '@cycle/dom'
-
 
 const view = () => {
   return div([
@@ -9,12 +7,4 @@ const view = () => {
   ])
 }
 
-const Page2 = () => {
-
-  const view$ = Rx.Observable.just(view());
-  return {
-    DOM: view$
-  }
-}
-
-export default Page2
+export default view
