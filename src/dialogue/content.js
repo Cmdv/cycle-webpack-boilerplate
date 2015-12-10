@@ -6,7 +6,6 @@ import switchPath from 'switch-path'
 import routes from '../utils/routes'
 
 function createRouteValue(DOM, History) {
-  console.log(DOM);
   return function getRouteValue(location) {
     const {value} = switchPath(location.pathname, routes(DOM))
 
