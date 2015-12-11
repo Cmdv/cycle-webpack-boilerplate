@@ -23,7 +23,7 @@ const model = ({DOM,History,}) => {
     .map(createRouteValue(DOM, History));
   return latestObj({
     routeValue: childView$
-      .flatMap(value => {
+      .flatMapLatest(value => {
         if (value.DOM) {
           return value.DOM;
         }
