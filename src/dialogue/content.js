@@ -6,8 +6,9 @@ import switchPath from 'switch-path'
 import routes from '../utils/routes'
 
 function createRouteValue(DOM, History) {
+  const routes$ = routes(DOM);
   return function getRouteValue(location) {
-    const {value} = switchPath(location.pathname, routes(DOM))
+    const {value} = switchPath(location.pathname, routes$)
 
     if (typeof value === 'function') {
       const dialogue = value({DOM, History});
