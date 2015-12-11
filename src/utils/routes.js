@@ -5,9 +5,9 @@ import Page2 from '../dialogue/pages/page2/page2-index'
 
 function routes(sources) {
   return {
-    '/': div('.home', Home(sources).DOM),
-    '/page1': div('.Page1',Page1(sources).DOM),
-    '/page2': div('.Page2',Page2(sources).DOM),
+    '/': div('.home', Home(sources).DOM.shareReplay(1)),
+    '/page1': div('.Page1',Page1(sources).DOM.shareReplay(1)),
+    '/page2': div('.Page2',Page2(sources).DOM.shareReplay(1)),
     '*': h1(`Page could not be found`),
   }
 }
