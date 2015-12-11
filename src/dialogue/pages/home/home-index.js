@@ -8,9 +8,10 @@ const Home = (sources) => {
   const state$ = model(actions)
 
   return {
-    DOM: view(state$)
+    DOM: view(state$),
+    CounterState: state$,
   }
-}
+};
 
 export default Home
 export {Home}
