@@ -13,21 +13,23 @@ function routes(sources) {
     sharedState: sharedState
   }, sources);
 
+  const home = Home(pageSources)
+  const page1 = Page1(pageSources)
+  const page2 = Page2(pageSources)
+
   const routesUrls = {
-    '/': Home(pageSources).DOM.shareReplay(1),
-    '/page1': Page1(pageSources).DOM.shareReplay(1),
-    '/page2': Page2(pageSources).DOM.shareReplay(1),
+    '/': home.DOM.shareReplay(1),
+    '/page1': page1.DOM.shareReplay(1),
+    '/page2': page2.DOM.shareReplay(1),
     '*': h1(`Page could not be found`),
   };
 
-  const states$ = R.map( c => (c.CounterState)? c.CounterState : c, routesUrls);
-
-  console.log(states$);
-
-  //latestObj(states$).subscribe(pageSources); // must be a function not sure what this does
-  //return R.map(c => c.DOM.shareReplay(1), routesUrls);
-
-  return routesUrls
+  return {
+    routesUrls,
+    home,
+    page1,
+    page2
+  }
 }
 
 
