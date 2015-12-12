@@ -8,9 +8,9 @@ import {h,makeDOMDriver,mockDOMResponse} from '@cycle/dom';
 
 test('Main component tests', function(t) {
   t.plan(3);
-  // mock the Main component and pass it the responses
-  function mainComponent(responses) {
-    let requests = Main(responses)
+  // mock the Main component and pass it the sources
+  function mainComponent(sources) {
+    let requests = Main(sources)
     return requests
   }
 

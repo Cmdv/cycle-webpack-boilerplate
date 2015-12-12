@@ -1,7 +1,8 @@
+import latestObj      from 'rx-combine-latest-obj'
+import {filterLinks}  from '@cycle/history'
+
+import {getUrl, extractValue, events}   from '../utils/utils'
 import {h, div, ul, li, a, nav, h1, h2} from '@cycle/dom'
-import latestObj from 'rx-combine-latest-obj'
-import {filterLinks} from '@cycle/history'
-import {getUrl, extractValue, events} from '../utils/utils'
 
 // Our navbar need some intent, our intent looks out for clicks on elements with the class of .link
 // and once we get one we filter it through our History driver
@@ -38,10 +39,10 @@ const view = () => {
         ])
       ])
     ])])
-}
+};
 
-const navbar = (responses) => {
-  const actions = intent(responses);
+const navbar = (sources) => {
+  const actions = intent(sources);
   const state$ = model(actions);
   const view$ = view();
   return {

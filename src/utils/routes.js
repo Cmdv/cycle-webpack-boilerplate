@@ -13,9 +13,9 @@ function routes(sources) {
     sharedState: sharedState
   }, sources);
 
-  const home = Home(pageSources)
-  const page1 = Page1(pageSources)
-  const page2 = Page2(pageSources)
+  const home = Home(pageSources);
+  const page1 = Page1(pageSources);
+  const page2 = Page2(pageSources);
 
   const routesUrls = {
     '/': home.DOM.shareReplay(1),
@@ -31,6 +31,5 @@ function routes(sources) {
     page2
   }
 }
-
 
 export default routes

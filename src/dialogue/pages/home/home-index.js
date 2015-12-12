@@ -1,6 +1,6 @@
-import view from './home-view'
+import view   from './home-view'
 import intent from './home-intent'
-import model from './home-model'
+import model  from './home-model'
 
 // returning our DOM
 const Home = (sources) => {

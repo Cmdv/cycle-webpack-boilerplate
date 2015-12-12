@@ -12,8 +12,8 @@ test('Navbar tests', function (t) {
 
   t.plan(1);
 
-  //function navComponent(responses) {
-  //  let requests = navbar(responses);
+  //function navComponent(sources) {
+  //  let requests = navbar(sources);
   //  return requests
   //}
   //

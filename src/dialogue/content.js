@@ -37,13 +37,13 @@ const model = ({DOM,History,}) => {
 
 const view = state$ => state$.map(
   ({routeValue,}) => {
-    return div('.innerContent',[routeValue])
+    return div('.innerContent', [routeValue])
   }
 ).distinctUntilChanged();
 
-const content = responses => {
+const content = sources => {
 
-  const state$ = model(responses);
+  const state$ = model(sources);
   const view$ = view(state$);
   return {
     DOM: view$,
