@@ -1,9 +1,8 @@
-import Rx from 'rx';
-
-import {div, h1} from '@cycle/dom';
-import latestObj from 'rx-combine-latest-obj';
+import Rx         from 'rx';
+import {div, h1}  from '@cycle/dom';
+import latestObj  from 'rx-combine-latest-obj';
 import switchPath from 'switch-path';
-import routes from '../utils/routes';
+import routes     from '../utils/routes';
 
 function createRouteValue(DOM, History) {
   const routes$ = routes(DOM);
