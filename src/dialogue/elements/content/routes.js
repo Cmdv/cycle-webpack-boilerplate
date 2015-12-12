@@ -2,9 +2,9 @@ import latestObj    from 'rx-combine-latest-obj';
 import Rx           from 'rx';
 import R            from 'ramda';
 import {div, h1, h} from '@cycle/dom';
-import Home         from '../dialogue/pages/home/home-index';
-import Page1        from '../dialogue/pages/page1/page1-index';
-import Page2        from '../dialogue/pages/page2/page2-index';
+import Home         from '../../pages/home/home-index';
+import Page1        from '../../pages/page1/page1-index';
+import Page2        from '../../pages/page2/page2-index';
 
 function routes(sources) {
   const sharedState = Rx.Subject();
