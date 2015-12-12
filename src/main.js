@@ -1,7 +1,7 @@
 import {run}                from '@cycle/core'
 import Rx                   from 'rx'
-import navbar               from './dialogue/elements/navbar/navbar'
-import content              from './dialogue/elements/content/content'
+import navbar               from './dialogue/elements/navbar/navbar-index'
+import content              from './dialogue/elements/content/content-index'
 // @cycle/dom has a hyperscript-helper built in so you can
 // declare all html elements you are going to use like div, h1, h2, nav etc
 import {makeDOMDriver, div} from '@cycle/dom'

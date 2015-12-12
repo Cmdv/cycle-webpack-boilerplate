@@ -1,5 +1,4 @@
 import Rx         from 'rx';
-import {div, h1}  from '@cycle/dom';
 import latestObj  from 'rx-combine-latest-obj';
 import switchPath from 'switch-path';
 import routes     from './routes';
@@ -35,19 +34,4 @@ const model = ({DOM,History,}) => {
   }).distinctUntilChanged();
 };
 
-const view = state$ => state$.map(
-  ({routeValue,}) => {
-    return div('.innerContent', [routeValue])
-  }
-).distinctUntilChanged();
-
-const content = sources => {
-
-  const state$ = model(sources);
-  const view$ = view(state$);
-  return {
-    DOM: view$,
-  };
-};
-
-export default content;
+export default model
