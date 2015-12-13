@@ -9,6 +9,7 @@ const content = sources => {
 
   const state$ = model(sources);
   const view$ = view(state$);
+
   return {
     DOM: view$,
   };

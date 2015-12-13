@@ -8,7 +8,7 @@ import Page2        from '../../pages/page2/page2-index';
 
 function routes(sources) {
   const sharedState = Rx.Subject();
-
+  // here we merge our sources with sharedState
   const pageSources = R.merge({
     sharedState: sharedState
   }, sources);
@@ -23,7 +23,6 @@ function routes(sources) {
     '/page2': page2.DOM.shareReplay(1),
     '*': h1(`Page could not be found`),
   };
-
   return {
     routesUrls,
     home,

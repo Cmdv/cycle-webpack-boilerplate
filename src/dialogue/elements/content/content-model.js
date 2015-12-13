@@ -9,7 +9,7 @@ function createRouteValue(DOM, History) {
   const routes$ = routesObj.routesUrls;
 
   return function getRouteValue(location) {
-    const {value} = switchPath(location.pathname, routes$)
+    const {value} = switchPath(location.pathname, routes$);
     if (typeof value === 'function') {
       const dialogue = value({DOM, History});
       return dialogue;
@@ -23,14 +23,10 @@ const model = ({DOM,History,}) => {
     .map(createRouteValue(DOM, History));
   return latestObj({
     routeValue: childView$
-      .flatMapLatest(value => {
-        if (value.DOM) {
-          return value.DOM;
-        }
-        return Rx.Observable.just(value);
-      })
+      .flatMapLatest(value =>
+        (value.DOM) ? value.DOM : Rx.Observable.just(value)
+      )
       .startWith(null)
-
   }).distinctUntilChanged();
 };
 

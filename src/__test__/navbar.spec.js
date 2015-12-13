@@ -2,10 +2,10 @@ import test                 from 'tape';
 import Rx                   from 'rx'
 import createRenderTarget   from './helper/createRenderTarget';
 import {makeHistoryDriver}  from '@cycle/history';
-import navbar               from '../dialogue/navbar';
+import navbar               from '../dialogue/elements/navbar/navbar-index';
 import {run}                from '@cycle/core';
 import {filterLinks} from '@cycle/history'
-import {getUrl, extractValue, events} from '../utils/utils'
+import {getUrl, extractValue, events} from '../dialogue/utils/utils'
 import {h,makeDOMDriver,mockDOMSource}    from '@cycle/dom';
 
 test('Navbar tests', function (t) {
