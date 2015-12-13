@@ -1,4 +1,4 @@
-import {run}                from '@cycle/core';
+import Cycle                from '@cycle/core';
 import {makeDOMDriver}      from '@cycle/dom';
 import {makeHistoryDriver}  from '@cycle/history';
 import Main                 from './main'
@@ -19,11 +19,7 @@ function mainApp(sources) {
 // History is using our makeHistoryDriver to deal with routing
 const sources = {
   DOM: makeDOMDriver('#application'),
-  History: makeHistoryDriver({
-    // if you want hash: false you will need to set up a server
-    hash: false,
-    queries: true,
-  }),
+  History: makeHistoryDriver({hash: false, queries: true,}),
 };
 
-run(mainApp,sources);
+Cycle.run(mainApp,sources);

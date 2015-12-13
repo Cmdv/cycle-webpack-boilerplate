@@ -1,10 +1,9 @@
-import {run}                from '@cycle/core'
-import Rx                   from 'rx'
-import navbar               from './dialogue/elements/navbar/navbar-index'
-import content              from './dialogue/elements/content/content-index'
+import Rx       from 'rx'
+import navbar   from './dialogue/components/navbar/navbar-index'
+import content  from './dialogue/components/content/content-index'
 // @cycle/dom has a hyperscript-helper built in so you can
 // declare all html elements you are going to use like div, h1, h2, nav etc
-import {makeDOMDriver, div} from '@cycle/dom'
+import {div}    from '@cycle/dom'
 
 // view is what we'd like to display in this case our sidebar + content all wrapped in a div
 const view = (navbar, content) => {
@@ -31,7 +30,6 @@ const main = sources => {
 
     return {
         DOM: view$,
-        // .url$ are inside the nav component
         History: Nav.url$,
     }
 };
