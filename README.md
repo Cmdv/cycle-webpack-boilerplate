@@ -6,6 +6,8 @@ Boilerplate for bdd / tdd / testing with Tape + Testem + Webpack + Cycle.js
 
 recompiles + re-runs test on file updates!
 
+There is a current [re-build](https://github.com/Cmdv/cycle-webpack-boilerplate/issues/7) happening so please be aware that there may be drastic changes in the next few weeks :smile:
+
 
 ## Installation
 
