@@ -1,6 +1,6 @@
 import Rx       from 'rx'
 import navbar   from './dialogue/components/navbar/navbar-index'
-import content  from './dialogue/components/content/content-index'
+import content  from './dialogue/components/content-router/content-router-index'
 // @cycle/dom has a hyperscript-helper built in so you can
 // declare all html elements you are going to use like div, h1, h2, nav etc
 import {div}    from '@cycle/dom'
@@ -26,7 +26,7 @@ const main = sources => {
             Nav.DOM,
             Content.DOM
         )
-    );
+    ).shareReplay(1);
 
     return {
         DOM: view$,
