@@ -9,7 +9,7 @@ const Home = (sources) => {
 
   return {
     DOM: view(state$),
-    CounterState: state$,
+    Props: state$,
   }
 };
 

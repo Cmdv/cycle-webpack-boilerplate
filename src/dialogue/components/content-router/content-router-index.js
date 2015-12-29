@@ -1,14 +1,10 @@
 import switchPath from 'switch-path';
 import Rx         from 'rx';
+import isolate    from '@cycle/isolate';
 import Home       from '../../pages/home/home-index';
 import Page1      from '../../pages/page1/page1-index';
 import Page2      from '../../pages/page2/page2-index';
 import Page404    from '../../pages/page404/page404-index';
-
-//function HomePage(userId) {
-//  const props$ = Observable.just({userId});
-//  return (sources) => Home({...sources, props$});
-//}
 
 function ContentRouter(sources) {
   const sinks$ = sources.History.map(location => {
@@ -19,10 +15,15 @@ function ContentRouter(sources) {
       '*': Page404,
     });
     const component = pathAndValue.value;
-    const distinct  = Rx.Observable.just(component(sources)).distinct();
-    console.log();
-    return component(sources);
-  }).shareReplay(1);
+    const Component = isolate(component);
+    // cold observable
+    Component(sources).Props.subscribe(x => console.log(x));
+    setTimeout(function () {
+      Component(sources).Props.subscribe(x => console.log(x));
+    }, 2000);
+
+    return Component(sources);
+  });
 
   return {
     DOM: sinks$.flatMapLatest(s => s.DOM),
@@ -32,5 +33,4 @@ function ContentRouter(sources) {
 
 export default ContentRouter;
 
-//component(sources).CounterState.subscribe(x => console.log(x));
-//component(sources).CounterState.delay(1000).subscribe(x => console.log(x));
+
