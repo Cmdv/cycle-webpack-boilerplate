@@ -20,6 +20,7 @@ const view = (navbar, content) => {
 const main = sources => {
   const Content = contentRouter(sources);
   const Nav = navbar(sources);
+  const Props = Content.Props;
 
   const view$ = Rx.Observable.just(
     view(
@@ -31,6 +32,7 @@ const main = sources => {
   return {
     DOM: view$,
     History: Nav.url$,
+    Props: Props,
   }
 };
 

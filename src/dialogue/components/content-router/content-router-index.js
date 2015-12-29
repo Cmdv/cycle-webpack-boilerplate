@@ -16,18 +16,23 @@ function ContentRouter(sources) {
     });
     const component = pathAndValue.value;
     const Component = isolate(component);
-    // cold observable
-    Component(sources).Props.subscribe(x => console.log(x));
-    setTimeout(function () {
-      Component(sources).Props.subscribe(x => console.log(x));
-    }, 2000);
+    const Component$ = Component(sources);
+    // this is the fix so far
+    const Props$ = () => Component$.Props ? sources.Props = Component$.Props.shareReplay(1): null;
 
-    return Component(sources);
-  });
+    return {
+      Comp: Component(sources),
+      Props: Props$()
+    };
+  }).shareReplay(1);
 
   return {
-    DOM: sinks$.flatMapLatest(s => s.DOM),
-    History: sinks$.flatMapLatest(s => s.link),
+    DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
+    History: sinks$.flatMapLatest(s => s.Comp.link),
+    Props: sinks$.flatMap(s => {
+      s.Props.subscribe(x => console.log('Router: ' + x));
+      return s.Props
+    })
   };
 }
 
