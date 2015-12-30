@@ -18,29 +18,29 @@ function ContentRouter(sources) {
 
     // the result from the switchpath
     const component = pathAndValue.value;
+
     // isolate the component will help if using templates
-    const Component = isolate(component);
-    const Component$ = Component(sources);
+    //const Component = isolate(component);
+    const Component$ = component(sources);
 
     // check if the page/component has a Props value and if so pass it on
-    const Props$ = () => Component$.Props ? sources.Props = Component$.Props.shareReplay(1): null;
+    const Props$ = () => Component$.Props ? sources.Props = Component$.Props : null;
 
     return {
       Comp: Component$,
-      Props: Props$() // return our Props$ to current page
+      Props: Props$() // return our Props$ to current page/component
     };
 
   }).shareReplay(1); // make sure sinks$ are hot
 
 
   return {
-    DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
-    History: sinks$.flatMapLatest(s => s.Comp.link),
+    DOM: sinks$.flatMap(s => s.Comp.DOM),
+    History: sinks$.flatMap(s => s.Comp.link),
     Props: sinks$.flatMapLatest(s => {
-      // be good not to have to subscribe to it!
-      const Props = s.Props.subscribe(x => x);
-      return Rx.Observable.just(Props);
-    })
+      console.log(s.Props);
+      return Rx.Observable.just(s.Props).do(x => console.log('after: ', x))
+    }),
   };
 }
 
