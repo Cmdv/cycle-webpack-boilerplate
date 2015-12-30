@@ -4,10 +4,9 @@ import model  from './home-model'
 
 // returning our DOM
 const Home = (sources) => {
+  const props$ = sources.Props;
   const actions = intent(sources);
-  const state$ = model(actions);
-
-  //state$.subscribe(x => console.log('HOME: ', x));
+  const state$ = model({...actions,props$});
 
   return {
     DOM: view(state$),

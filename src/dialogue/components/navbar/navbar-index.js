@@ -4,12 +4,13 @@ import model          from './navbar-model'
 import view           from './navbar-view'
 
 const navbar = (sources) => {
+
   const actions = intent(sources);
-  const state$ = model(actions);
+  const state$ = model({actions});
   const view$ = view();
   return {
     DOM: view$,
-    url$: extractValue(`url`, state$),
+    url$: extractValue(`url`, state$).startWith('/'),
   }
 };
 
