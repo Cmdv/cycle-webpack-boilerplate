@@ -1,7 +1,7 @@
 {
   "name": "cycle-webpack-boilerplate",
-  "version": "0.1.0",
-  "description": "cycle webpack babel boilerplate",
+  "version": "0.2.0",
+  "description": "Cycle webpack babel boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -32,10 +32,10 @@
   },
   "homepage": "https://github.com/Cmdv/cycle-webpack-boilerplate#readme",
   "dependencies": {
-    "@cycle/core": "6.0.0-rc2",
-    "@cycle/dom": "8.0.0-rc2",
+    "@cycle/core": "^6.0.0",
+    "@cycle/dom": "^8.0.0",
     "@cycle/history": "^1.1.0",
-    "@cycle/isolate": "1.0.x",
+    "@cycle/isolate": "^1.0.2",
     "css-loader": "^0.23.0",
     "ramda": "^0.18.0",
     "rx": "^4.0.6",

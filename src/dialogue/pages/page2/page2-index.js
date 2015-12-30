@@ -1,10 +1,10 @@
 import Rx   from 'rx'
 import view from './page2-view'
 
-const Page2 = () => {
-  const view$ = Rx.Observable.just(view());
+const Page2 = (sources) => {
   return {
-    DOM: view$
+    DOM: Rx.Observable.just(view()),
+    Props: sources.Props,
   }
 };
 

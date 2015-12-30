@@ -4,7 +4,8 @@ import Rx from 'rx';
 const homeModel = actions =>
   Rx.Observable.merge(
     actions.inc$,
-    actions.dec$
+    actions.dec$,
+    actions.props$
   ).startWith(0).scan((x, y) =>  x + y).shareReplay(1);
 
 export default homeModel;

@@ -1,17 +1,17 @@
 import view   from './home-view'
 import intent from './home-intent'
 import model  from './home-model'
-import Rx     from 'rx';
-
 
 // returning our DOM
 const Home = (sources) => {
   const actions = intent(sources);
   const state$ = model(actions);
 
+  //state$.subscribe(x => console.log('HOME: ', x));
+
   return {
     DOM: view(state$),
-    CounterState: state$,
+    Props: state$,
   }
 };
 
