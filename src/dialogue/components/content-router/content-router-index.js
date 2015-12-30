@@ -8,39 +8,38 @@ import Page404    from '../../pages/page404/page404-index';
 
 function ContentRouter(sources) {
   const sinks$ = sources.History.map(location => {
+    // use switchpath to marry up our current url with component
     const pathAndValue = switchPath(location.pathname, {
       '/': Home,
       '/page1': Page1,
       '/page2': Page2,
       '*': Page404,
     });
-    const component = pathAndValue.value;
-    
-    // tried isolating
-    const Component = isolate(component);
 
-    // when this hit's Home again everything is reset to 0
-    // but if you browse between page 1 & 2 the state keeps
+    // the result from the switchpath
+    const component = pathAndValue.value;
+    // isolate the component will help if using templates
+    const Component = isolate(component);
     const Component$ = Component(sources);
 
-    // Here I grab the current Props if available
+    // check if the page/component has a Props value and if so pass it on
     const Props$ = () => Component$.Props ? sources.Props = Component$.Props.shareReplay(1): null;
-
 
     return {
       Comp: Component$,
-      Props: Props$()
+      Props: Props$() // return our Props$ to current page
     };
 
   }).shareReplay(1); // make sure sinks$ are hot
+
 
   return {
     DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
     History: sinks$.flatMapLatest(s => s.Comp.link),
     Props: sinks$.flatMapLatest(s => {
-      // just testing to see that data is coming into router from Props
-      s.Props.subscribe(x => console.log('Router: ' + x));
-      return s.Props
+      // be good not to have to subscribe to it!
+      const Props = s.Props.subscribe(x => x);
+      return Rx.Observable.just(Props);
     })
   };
 }
