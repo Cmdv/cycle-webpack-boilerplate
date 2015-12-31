@@ -20,7 +20,7 @@ const view = (navbar, content) => {
 const main = sources => {
   const Content = contentRouter(sources);
   const Nav = navbar(sources);
-  const Props = Content.Props;
+  const Props = Content.Props
 
   const view$ = Rx.Observable.just(
     view(
@@ -29,10 +29,14 @@ const main = sources => {
     )
   );
 
+  const history$ = Nav.url$.withLatestFrom(
+    Props, (pathname, props) =>
+    ({path: pathname, state: props})
+  )
+
   return {
     DOM: view$,
-    History: Nav.url$,
-    Props: Props,
+    History: history$,
   }
 };
 

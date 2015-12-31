@@ -7,9 +7,9 @@ import Page2      from '../../pages/page2/page2-index';
 import Page404    from '../../pages/page404/page404-index';
 
 function ContentRouter(sources) {
-  const sinks$ = sources.History.map(location => {
+  const sinks$ = sources.History.map(({pathname}) => {
     // use switchpath to marry up our current url with component
-    const pathAndValue = switchPath(location.pathname, {
+    const pathAndValue = switchPath(pathname, {
       '/': Home,
       '/page1': Page1,
       '/page2': Page2,
@@ -23,27 +23,21 @@ function ContentRouter(sources) {
     //const Component = isolate(component);
     const Component$ = component(sources);
 
-    // check if the page/component has a Props value and if so pass it on
-    const Props$ = () => Component$.Props ? sources.Props = Component$.Props : null;
+    // pass on Props
+    const Props$ = Component$.Props
 
     return {
       Comp: Component$,
-      Props: Props$() // return our Props$ to current page/component
+      Props: Props$.share() // return our Props$ to current page/component
     };
-
   }).shareReplay(1); // make sure sinks$ are hot
 
 
   return {
-    DOM: sinks$.flatMap(s => s.Comp.DOM),
-    History: sinks$.flatMap(s => s.Comp.link),
-    Props: sinks$.flatMapLatest(s => {
-      console.log(s.Props);
-      return Rx.Observable.just(s.Props).do(x => console.log('after: ', x))
-    }),
+    DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
+    History: sinks$.flatMapLatest(s => s.Comp.link),
+    Props: sinks$.flatMapLatest(s => s.Props),
   };
 }
 
 export default ContentRouter;
-
-
