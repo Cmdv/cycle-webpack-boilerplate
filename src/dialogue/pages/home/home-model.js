@@ -3,9 +3,8 @@ import Rx from 'rx';
 // (a,b) -> num
 const homeModel = ({actions, props$}) =>
   Rx.Observable.merge(
+    props$.take(1).map(({counter}) => parseFloat(counter)),
     actions.inc$,
     actions.dec$,
-    props$
-  ).startWith(0).scan((x, y) =>  x + y).shareReplay(1);
-
+  ).scan((x, y) => x + y).shareReplay(1)
 export default homeModel;

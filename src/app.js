@@ -22,9 +22,7 @@ function mainApp(sources) {
 // History is using our makeHistoryDriver to deal with routing
 const sources = {
   DOM: makeDOMDriver('#application'),
-  History: makeHistoryDriver({hash: false, queries: true,}),
-  Props: () => Rx.Observable.of(0)
-
+  History: makeHistoryDriver({hash: false, queries: true}),
 };
 
 Cycle.run(mainApp,sources);
