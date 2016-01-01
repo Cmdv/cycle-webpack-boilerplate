@@ -1,11 +1,13 @@
 import Rx from 'rx';
 // merging our clicks from our intent
 // (a,b) -> num
-const homeModel = actions =>
+const homeModel = ({inc$,dec$, props$}) =>
   Rx.Observable.merge(
-    actions.inc$,
-    actions.dec$,
-    actions.props$
-  ).startWith(0).scan((x, y) =>  x + y).shareReplay(1);
+    props$.take(1).map((counter) => parseFloat(counter)),
+    inc$,
+    dec$
+  )
+    .scan((x, y) =>  x + y)
+    .shareReplay(1);
 
 export default homeModel;

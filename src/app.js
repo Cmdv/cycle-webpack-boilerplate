@@ -23,7 +23,7 @@ function mainApp(sources) {
 const sources = {
   DOM: makeDOMDriver('#application'),
   History: makeHistoryDriver({hash: false, queries: true,}),
-  Props: () => Rx.Observable.of(0)
+  Props: () => Rx.Observable.just(0)
 
 };
 

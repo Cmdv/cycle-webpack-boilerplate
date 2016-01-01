@@ -7,9 +7,9 @@ import Page2      from '../../pages/page2/page2-index';
 import Page404    from '../../pages/page404/page404-index';
 
 function ContentRouter(sources) {
-  const sinks$ = sources.History.map(location => {
+  const sinks$ = sources.History.map(({pathname}) => {
     // use switchpath to marry up our current url with component
-    const pathAndValue = switchPath(location.pathname, {
+    const pathAndValue = switchPath(pathname, {
       '/': Home,
       '/page1': Page1,
       '/page2': Page2,
@@ -18,16 +18,17 @@ function ContentRouter(sources) {
 
     // the result from the switchpath
     const component = pathAndValue.value;
+
     // isolate the component will help if using templates
-    const Component = isolate(component);
-    const Component$ = Component(sources);
+    //const Component = isolate(component);
+    const Component$ = component(sources);
 
     // check if the page/component has a Props value and if so pass it on
-    const Props$ = () => Component$.Props ? sources.Props = Component$.Props.shareReplay(1): null;
+    const Props$ = Component$.Props ? sources.Props = Component$.Props : sources.Props;
 
     return {
       Comp: Component$,
-      Props: Props$() // return our Props$ to current page
+      Props: Props$.share() // return our Props$ to current page/component
     };
 
   }).shareReplay(1); // make sure sinks$ are hot
@@ -36,14 +37,8 @@ function ContentRouter(sources) {
   return {
     DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
     History: sinks$.flatMapLatest(s => s.Comp.link),
-    Props: sinks$.flatMapLatest(s => {
-      // be good not to have to subscribe to it!
-      const Props = s.Props.subscribe(x => x);
-      return Rx.Observable.just(Props);
-    })
+    Props: sinks$.flatMapLatest(s => s.Props),
   };
 }
 
 export default ContentRouter;
-
-
