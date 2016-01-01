@@ -30,9 +30,7 @@ function ContentRouter(sources) {
       Comp: Component$,
       Props: Props$.share() // return our Props$ to current page/component
     };
-
   }).shareReplay(1); // make sure sinks$ are hot
-
 
   return {
     DOM: sinks$.flatMapLatest(s => s.Comp.DOM),

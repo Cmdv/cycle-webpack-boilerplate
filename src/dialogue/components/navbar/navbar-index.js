@@ -10,7 +10,7 @@ const navbar = (sources) => {
   const view$ = view();
   return {
     DOM: view$,
-    url$: extractValue(`url`, state$).startWith('/'),
+    url$: extractValue(`url`, state$),
   }
 };
 

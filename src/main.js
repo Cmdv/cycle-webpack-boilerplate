@@ -1,5 +1,5 @@
-import Rx       from 'rx'
-import navbar   from './dialogue/components/navbar/navbar-index'
+import Rx             from 'rx'
+import navbar         from './dialogue/components/navbar/navbar-index'
 import contentRouter  from './dialogue/components/content-router/content-router-index'
 // @cycle/dom has a hyperscript-helper built in so you can
 // declare all html elements you are going to use like div, h1, h2, nav etc
@@ -18,6 +18,7 @@ const view = (navbar, content) => {
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
 const main = sources => {
+
   const Content = contentRouter(sources);
   const Nav = navbar(sources);
   const Props = Content.Props;
@@ -28,7 +29,7 @@ const main = sources => {
       Content.DOM
     )
   );
-
+  //Nav.url$.subscribe(x => console.log(x));
   return {
     DOM: view$,
     History: Nav.url$,

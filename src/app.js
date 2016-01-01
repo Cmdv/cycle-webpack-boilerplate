@@ -12,7 +12,6 @@ require("!style!css!styles/grids-responsive-min.css");
 // creating our mainApp from /.main
 function mainApp(sources) {
   let sinks = Main(sources);
-  //sinks.Props.subscribe(x => console.log('APP: ' + x));
   return sinks
 }
 
