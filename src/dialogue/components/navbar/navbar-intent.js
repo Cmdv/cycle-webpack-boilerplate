@@ -9,7 +9,7 @@ const intent = ({DOM}) => ({
       `click`,
       `touchstart`,
     ])
-    .filter(filterLinks),
+    .filter(filterLinks)
 });
 
 export default intent;
