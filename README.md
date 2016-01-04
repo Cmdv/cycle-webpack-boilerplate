@@ -48,3 +48,5 @@ Get an isolated component built that can be reused in multiple places in the app
 
 ## Credit
 [@TylorS](https://github.com/TylorS) for helping with the router passing state. :+1:
+
+also check out a list of all things Cycle related [here](https://github.com/vic/awesome-cyclejs) by [vic](https://github.com/vic)
