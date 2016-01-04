@@ -55,15 +55,8 @@ test('HOME TESTS #', function (t) {
     const dec$ = Rx.Observable.just(7).delay(100);
     const inc$ = Rx.Observable.just(1).delay(150);
 
-    const poo = [4,11,12];
-    q.equal(poo, poo, 'make this equal')
-
-    const results = [];
-
-    model({inc$, dec$, props$}).subscribe(
-      number => results.push(number),
-      number => console.dir(number),
-      number => console.dir(number)
+    model({inc$, dec$, props$}).skip(2).subscribe( results =>
+      q.equal(results, 12, 'make this equal')
     );
 
 
