@@ -5,6 +5,7 @@ import navbarIntent     from '../navbar-intent'
 import navbarModel      from '../navbar-model'
 import mockClickEvent   from './mockClickEvent'
 
+console.dir(location);
 // get location port
 const port = ':' + location.port;
 

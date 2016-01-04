@@ -1,7 +1,7 @@
 import {h, div, ul, li, a, nav, h1, h2} from '@cycle/dom'
 
-
 const view = () => {
+
   return div([
     h1('.brand-title', [`An APP`]),
     h2('.brand-tagline', [`Showcasing Cycle.js`]),

@@ -8,6 +8,7 @@ import Page404    from '../../pages/page404/page404-index';
 
 function ContentRouter(sources) {
   const sinks$ = sources.History.map(({pathname}) => {
+
     // use switchpath to marry up our current url with component
     const pathAndValue = switchPath(pathname, {
       '/': Home,
