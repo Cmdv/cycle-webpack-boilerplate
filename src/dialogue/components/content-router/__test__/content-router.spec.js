@@ -11,6 +11,8 @@ const url = {
   page2: {path: `/page2`}
 };
 
+const currPath = location.pathname;
+
 test('CONTENT ROUTER TESTS #', function (t) {
   t.plan(4);
 

@@ -5,7 +5,7 @@ import {getUrl, extractValue, events}   from '../../utils/utils'
 // and once we get one we filter it through our History driver
 const intent = ({DOM}) => ({
   click$: events(
-    DOM.select('.link'), [
+    DOM.select('.link a'), [
       `click`,
       `touchstart`,
     ])

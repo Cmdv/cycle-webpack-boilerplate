@@ -14,7 +14,7 @@ test('NAVBAR TESTS #', function (t) {
     q.plan(2);
 
     const mockedDOM = mockDOMSource({
-      '.link': {
+      '.link a': {
         'click': Observable.fromArray([mockClickEvent({href: '/test-url' })])
       }
     });
@@ -35,7 +35,7 @@ test('NAVBAR TESTS #', function (t) {
     q.plan(2);
 
     const mockedDOM = mockDOMSource({
-      '.link': {
+      '.link a': {
         'touchstart': Observable.fromArray([mockClickEvent({href: '/page1' })])
       }
     });
