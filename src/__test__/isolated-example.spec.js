@@ -7,7 +7,6 @@ import Main                 from '../main';
 import Cycle                from '@cycle/core';
 import {h,makeDOMDriver,h2, h3, h4, div} from '@cycle/dom';
 
-
 test('DOM ISOLATED TESTS EXAMPLE #', function(t) {
   t.plan(6);
 
