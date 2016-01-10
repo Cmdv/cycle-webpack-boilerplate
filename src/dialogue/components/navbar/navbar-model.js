@@ -4,7 +4,7 @@ const model = ({actions}) => {
   return latestObj({
     url: actions.click$
       .map(event => event.target.href.replace(location.origin, ``)),
-  })
+  }).startWith()
 
 };
 
