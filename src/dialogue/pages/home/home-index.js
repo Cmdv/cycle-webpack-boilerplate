@@ -4,7 +4,7 @@ import model  from './home-model'
 
 // returning our DOM
 const Home = (sources) => {
-  const props$ = sources.Props;
+  const props$ = sources.router.props$;
   const actions = intent(sources);
   const state$ = model({...actions,props$});
 
