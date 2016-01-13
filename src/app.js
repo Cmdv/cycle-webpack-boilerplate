@@ -10,13 +10,13 @@ require("!style!css!styles/layout.css");
 require("!style!css!styles/grids-responsive-min.css");
 
 // creating our mainApp from /.main
-console.log('hellllllo');
+
 
 function mainApp(sources) {
-  const props$ = Rx.Observable.just({counter: '0'});
-  const nestedRoute$ = sources.router.path('/', props$);
+  const props$ = Rx.Observable.just({counter: 0});
+  const routes$ = sources.router.path('/', props$);
 
-  const vTree$ = Main({router: nestedRoute$, ...sources}).DOM;
+  const vTree$ = Main({router: routes$, ...sources}).DOM;
 
   return {
     DOM: vTree$,

@@ -4,10 +4,10 @@ import routes from './routes'
 import {makeRouterDriver, createLocation} from 'cycle-router'
 
 
-function ContentRouter(sources) {
-  console.log(sources);
+function content(sources) {
   const component$ = sources.router.define(routes)
-    .flatMap(({value, props$}) => {
+    .flatMap(({path, value, fullPath, /*routeDefinitions,*/ props$}) => {
+      props$.subscribe(x => console.log(x.counter))// not passed through to here
       return value(sources, props$)
     })
 
@@ -19,4 +19,4 @@ function ContentRouter(sources) {
   }
 }
 
-export default ContentRouter;
+export default content;

@@ -3,7 +3,7 @@ import Rx from 'rx';
 // (a,b) -> num
 const homeModel = ({inc$,dec$, props$}) => {
   return Rx.Observable.merge(
-    props$.take(1).map((counter) => parseFloat(counter)),
+    props$.take(1).map((count) => parseFloat(count)),
     inc$,
     dec$
     )
