@@ -12,12 +12,14 @@ const view = (navbar, content) => {
     div('.content .pure-u-1 .pure-u-md-3-4', [content])
   ])
 };
-
 // we need to pass our components to cycle and give them a "source" when they come from cycle
 // creating this "cycle", here you can see that view$ is a Rx Observable containing out "view"
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
-const main = sources => {
+const main = (sources) => {
+  console.log(sources);
+  sources.router.props$.subscribe(x => console.log(x))
+
   const Content = content(sources);
   const Nav = navbar(sources);
   const props$ = Content.props$;

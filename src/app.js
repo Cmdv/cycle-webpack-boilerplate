@@ -13,8 +13,10 @@ require("!style!css!styles/grids-responsive-min.css");
 
 
 function mainApp(sources) {
-  const props$ = Rx.Observable.just({counter: 0});
+  const props$ = Rx.Observable.just({counter: 2}).share();
   const routes$ = sources.router.path('/', props$);
+
+  routes$.props$.subscribe(x => console.log(x)) // can access counter here
 
   const main = Main({router: routes$, ...sources});
   return {
