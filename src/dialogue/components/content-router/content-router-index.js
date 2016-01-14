@@ -5,17 +5,15 @@ import {makeRouterDriver, createLocation} from 'cycle-router'
 
 
 function content(sources) {
+  const props$ = new Rx.ReplaySubject(1)
   const component$ = sources.router.define(routes)
-    .flatMap(({path, value, fullPath, /*routeDefinitions,*/ props$}) => {
-      props$.subscribe(x => console.log(x.counter))// not passed through to here
-      return value(sources, props$)
+    .map(({value/*, props$*/}) => {
+      return value(sources, props$.startWith({counter: 0}))
     })
 
-  const vtree$ = component$.flatMapLatest(c => c.DOM)
-  const props$ = component$.flatMapLatest(c => c.props$)
   return {
-    DOM: vtree$,
-    props$
+    DOM: component$.flatMapLatest(c => c.DOM),
+    props$: component$.flatMapLatest(c => c.props$)
   }
 }
 

@@ -2,7 +2,7 @@ import {h, div, h1, h2, button, p} from '@cycle/dom'
 
 const view = (state$) =>
   // mapping over our merged model to update 'count'
-  state$.map(count =>
+  state$.map(({counter}) =>
     div('.homepage', [
       h1('.content-subhead', ['Home Page']),
       h1([`Welcome to the Home Page`]),
@@ -10,7 +10,7 @@ const view = (state$) =>
         button('.decrement .pure-button .button-error .pure-u-1-2', 'Decrement'),
         button('.increment .pure-button .button-success .pure-u-1-2', 'Increment'),
         div('.pure-u-1 .counter-table-result',[
-          h2('Counter: ' + count)
+          h2('Counter: ' + counter)
         ])
       ])
     ])

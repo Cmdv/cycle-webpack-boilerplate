@@ -1,13 +1,12 @@
 import Rx   from 'rx'
 import view from './page1-view'
 
-const Page1 = (sources) => {
-  const props$ = sources.Props;
+const Page1 = (sources, props$) => {
   const $view = view(props$);
 
   return {
     DOM: Rx.Observable.just($view),
-    Props: props$,
+    props$,
   }
 };
 

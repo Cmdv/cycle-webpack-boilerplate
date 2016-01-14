@@ -3,12 +3,13 @@ import Rx from 'rx';
 // (a,b) -> num
 const homeModel = ({inc$,dec$, props$}) => {
   return Rx.Observable.merge(
-    props$.take(1).map((count) => parseFloat(count)),
+    props$.map(({counter}) => parseFloat(counter)),
     inc$,
     dec$
     )
-    .scan((x, y) =>  x + y)
-    .shareReplay(1);
+    .scan((x, y) =>  x + y, 0)
+    .shareReplay(1)
+    .map(x => ({counter: x}))
 }
 
 export default homeModel;
