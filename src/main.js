@@ -18,10 +18,9 @@ const view = (navbar, content) => {
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
 const main = sources => {
-  console.log(sources);
   const Content = content(sources);
   const Nav = navbar(sources);
-  const Props = Content.props$;
+  const props$ = Content.props$;
 
   const view$ = Rx.Observable.just(
     view(
@@ -33,7 +32,7 @@ const main = sources => {
   return {
     DOM: view$,
     router: Nav.url$,
-    Props: Props,
+    props$,
   }
 };
 

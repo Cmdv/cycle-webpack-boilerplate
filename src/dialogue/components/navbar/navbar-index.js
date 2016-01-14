@@ -7,10 +7,10 @@ const navbar = (sources) => {
 
   const actions = intent(sources);
   const state$ = model({actions});
-  const view$ = view();
+  const view$ = Rx.Observable.just(view());
   return {
     DOM: view$,
-    url$: extractValue(`url`, state$),
+    url$: state$.pluck('url'),
   }
 };
 

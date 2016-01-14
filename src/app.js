@@ -16,17 +16,17 @@ function mainApp(sources) {
   const props$ = Rx.Observable.just({counter: 0});
   const routes$ = sources.router.path('/', props$);
 
-  const vTree$ = Main({router: routes$, ...sources}).DOM;
-
+  const main = Main({router: routes$, ...sources});
   return {
-    DOM: vTree$,
-    router: Rx.Observable.just(createLocation('/'))
+    DOM: main.DOM,
+    router: main.router.startWith('/'),
+    props$: main.props$
   }
 }
 
 const sources = {
   DOM: makeDOMDriver('#application'),
-  router: makeRouterDriver({hash: false, queries: true}),
+  router: makeRouterDriver({hash: true})
 };
 
 Cycle.run(mainApp,sources);
