@@ -17,8 +17,10 @@ const view = (navbar, content) => {
 // creating this "cycle", here you can see that view$ is a Rx Observable containing out "view"
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
-const main = sources => {
-  const Content = content(sources);
+const main = (routes$, sources) => {
+  //routes$.props$.subsribe(x => console.log('Main', x))
+
+  const Content = content(routes$, sources);
   const Nav = navbar(sources);
   const props$ = Content.props$;
 

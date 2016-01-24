@@ -2,7 +2,7 @@ import Cycle                from '@cycle/core';
 import {makeDOMDriver}      from '@cycle/dom';
 import Rx                   from 'rx';
 import Main                 from './main'
-import {makeRouterDriver, createLocation} from 'cycle-router'
+import {makeRouterDriver} from 'cycle-router'
 
 // we are pulling in our css files here for webpack to compile
 require("!style!css!styles/pure-min.css");
@@ -16,7 +16,7 @@ function mainApp(sources) {
   const props$ = Rx.Observable.just({counter: 0});
   const routes$ = sources.router.path('/', props$);
 
-  const main = Main({router: routes$, ...sources});
+  const main = Main(routes$, sources);
   return {
     DOM: main.DOM,
     router: main.router.startWith('/'),
@@ -26,7 +26,7 @@ function mainApp(sources) {
 
 const sources = {
   DOM: makeDOMDriver('#application'),
-  router: makeRouterDriver({hash: true})
+  router: makeRouterDriver({hash: false}),
 };
 
 Cycle.run(mainApp,sources);
