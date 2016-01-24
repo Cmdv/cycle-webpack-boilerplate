@@ -13,7 +13,7 @@ require("!style!css!styles/grids-responsive-min.css");
 
 
 function mainApp(sources) {
-  const props$ = Rx.Observable.just({counter: 0});
+  const props$ = sources.props$
   const routes$ = sources.router.path('/', props$);
 
   const main = Main(routes$, sources);
@@ -27,6 +27,7 @@ function mainApp(sources) {
 const sources = {
   DOM: makeDOMDriver('#application'),
   router: makeRouterDriver({hash: false}),
+  props$: () => Rx.Observable.just({counter: 0})
 };
 
 Cycle.run(mainApp,sources);
