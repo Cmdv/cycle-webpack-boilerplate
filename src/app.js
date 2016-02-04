@@ -2,7 +2,7 @@ import Cycle                from '@cycle/core';
 import {makeDOMDriver}      from '@cycle/dom';
 import Rx                   from 'rx';
 import Main                 from './main'
-import {makeRouterDriver} from 'cycle-router'
+import {makeRouterDriver} from './dialogue/utils/router'
 
 // we are pulling in our css files here for webpack to compile
 require("!style!css!styles/pure-min.css");

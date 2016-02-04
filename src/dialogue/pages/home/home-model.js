@@ -8,9 +8,7 @@ const homeModel = ({inc$,dec$}, props$) => {
     dec$
     )
     .scan((x, y) =>  x + y)
-    .do(x => console.log(x))
     .map(x => {
-      console.log('Model Exit: ', x);
       return {counter: x}
     })
 
