@@ -34,9 +34,11 @@
   "dependencies": {
     "@cycle/core": "^6.0.0",
     "@cycle/dom": "^8.0.0",
-    "@cycle/history": "^1.1.0",
     "@cycle/isolate": "^1.0.2",
     "css-loader": "^0.23.0",
+    "cyclic-history": "^0.1.0",
+    "cyclic-router": "^0.3.0",
+    "history": "^1.17.0",
     "ramda": "^0.18.0",
     "rx": "^4.0.6",
     "rx-combine-latest-obj": "^1.0.2",

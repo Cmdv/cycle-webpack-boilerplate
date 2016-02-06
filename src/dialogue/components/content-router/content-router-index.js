@@ -1,42 +1,33 @@
-import switchPath from 'switch-path';
-import Rx         from 'rx';
-import isolate    from '@cycle/isolate';
 import Home       from '../../pages/home/home-index';
 import Page1      from '../../pages/page1/page1-index';
 import Page2      from '../../pages/page2/page2-index';
 import Page404    from '../../pages/page404/page404-index';
 
+const routes = {
+  '/': Home,
+  '/page1': Page1,
+  '/page2': Page2,
+  '*': Page404
+};
+
 function ContentRouter(sources) {
-  const sinks$ = sources.History.map(({pathname}) => {
+  const {router, state$} = sources;
+  const {path$, value$} = router.define(routes);
 
-    // use switchpath to marry up our current url with component
-    const pathAndValue = switchPath(pathname, {
-      '/': Home,
-      '/page1': Page1,
-      '/page2': Page2,
-      '*': Page404,
-    });
-
-    // the result from the switchpath
-    const component = pathAndValue.value;
-
-    // isolate the component will help if using templates
-    //const Component = isolate(component);
-    const Component$ = component(sources);
-
-    // check if the page/component has a Props value and if so pass it on
-    const Props$ = Component$.Props ? sources.Props = Component$.Props : sources.Props;
-
-    return {
-      Comp: Component$,
-      Props: Props$.share() // return our Props$ to current page/component
-    };
-  }).shareReplay(1); // make sure sinks$ are hot
+  const childrenDOM$ = path$.zip(value$,
+    (path, value) => {
+      const comp = value({...sources, router: router.path(path), state$: state$.take(1)})
+      return {
+        DOM: comp.DOM,
+        state$: comp.state$
+      }
+    }
+  )
 
   return {
-    DOM: sinks$.flatMapLatest(s => s.Comp.DOM),
-    History: sinks$.flatMapLatest(s => s.Comp.link),
-    Props: sinks$.flatMapLatest(s => s.Props),
+    DOM: childrenDOM$.flatMapLatest(s => s.DOM),
+    state$: childrenDOM$.flatMapLatest(s => s.state$),
+    path$: path$
   };
 }
 
