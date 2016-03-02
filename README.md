@@ -40,6 +40,9 @@ For tests to run properlly and hot reloading, make sure you have both npm script
 
 [babel](https://github.com/babel/babel) - compiler for converting ES6
 
+## Other Boilerplates:
+[cycle-browserify-boilerplate](https://github.com/kahlil/cycle-browserify-boilerplate) by [kahlil](https://github.com/kahlil) is very similar to this boilerplate but using Browserify as the build center of it's build process.
+
 ## To Do's
 1. More tests!
 
