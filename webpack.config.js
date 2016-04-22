@@ -1,21 +1,21 @@
 var webpack = require('webpack');
 var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
     app: [
-      'webpack-dev-server/client?http://0.0.0.0:3000',
-      'webpack/hot/dev-server',
-      './src/app'
+      path.join(__dirname, 'src/app')
     ]
   },
 
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, './build'),
-    publicPath: '/build/'
+    filename: '[name].js',
+    pathInfo: true,
+    path: path.join(__dirname, './build/'),
+    publicPath: '/'
   },
 
   resolve: {
@@ -32,8 +32,22 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ]
+    new webpack.NoErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: 'body',
+      filename: 'index.html'
+    }),
+  ],
+
+  devServer: {
+    port: 3000,
+    host: 'localhost',
+    historyApiFallback: true,
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
+  }
 
 };
