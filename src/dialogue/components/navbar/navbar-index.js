@@ -7,7 +7,7 @@ const navbar = (sources) => {
 
   const actions = intent(sources);
   const state$ = model({actions});
-  const view$ = view();
+  const view$ = view(sources);
   return {
     DOM: view$,
     url$: extractValue(`url`, state$),
