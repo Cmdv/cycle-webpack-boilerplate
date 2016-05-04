@@ -22,7 +22,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
     modulesDirectories: ['src', 'node_modules'],
     alias: {
-      'pages': path.join(__dirname, '/src/dialogue/pages/')
+      'pages': path.join(__dirname, '/src/dialogue/pages/'),
+      'utils': path.join(__dirname, '/src/dialogue/utils/')
     }
   },
 
