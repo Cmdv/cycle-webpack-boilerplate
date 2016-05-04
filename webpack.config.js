@@ -23,7 +23,8 @@ module.exports = {
     modulesDirectories: ['src', 'node_modules'],
     alias: {
       'pages': path.join(__dirname, '/src/dialogue/pages/'),
-      'utils': path.join(__dirname, '/src/dialogue/utils/')
+      'utils': path.join(__dirname, '/src/dialogue/utils/'),
+      '__test_helper__': path.join(__dirname, '/src/__test__/helper/')
     }
   },
 

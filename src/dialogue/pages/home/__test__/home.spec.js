@@ -8,7 +8,7 @@ import intent             from '../home-intent'
 import model              from '../home-model'
 import view               from '../home-view'
 import mockClickEvent     from './mockClickEvent'
-import createRenderTarget from '../../../../__test__/helper/createRenderTarget'
+import createRenderTarget from '__test_helper__/createRenderTarget'
 
 //const userEvents = mockDOMSource({
 //  '.foo': {
