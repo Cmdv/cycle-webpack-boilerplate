@@ -20,7 +20,10 @@ module.exports = {
 
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    modulesDirectories: ['src', 'node_modules']
+    modulesDirectories: ['src', 'node_modules'],
+    alias: {
+      'pages': path.join(__dirname, '/src/dialogue/pages/')
+    }
   },
 
   module: {

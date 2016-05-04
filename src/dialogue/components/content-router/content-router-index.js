@@ -1,10 +1,10 @@
 import switchPath from 'switch-path';
 import Rx         from 'rx';
 import isolate    from '@cycle/isolate';
-import Home       from '../../pages/home/home-index';
-import Page1      from '../../pages/page1/page1-index';
-import Page2      from '../../pages/page2/page2-index';
-import Page404    from '../../pages/page404/page404-index';
+import Home       from 'pages/home/home-index';
+import Page1      from 'pages/page1/page1-index';
+import Page2      from 'pages/page2/page2-index';
+import Page404    from 'pages/page404/page404-index';
 
 function ContentRouter(sources) {
   const sinks$ = sources.History.map(({pathname}) => {
