@@ -1,4 +1,4 @@
-import {extractValue} from '../../utils/utils'
+import {extractValue} from 'utils/utils'
 import intent         from './navbar-intent'
 import model          from './navbar-model'
 import view           from './navbar-view'
