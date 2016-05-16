@@ -33,10 +33,10 @@
   },
   "homepage": "https://github.com/Cmdv/cycle-webpack-boilerplate#readme",
   "dependencies": {
-    "@cycle/core": "^6.0.3",
-    "@cycle/dom": "^9.4.0",
-    "@cycle/history": "^2.0.2",
+    "@cycle/dom": "^10.0.0-rc21",
+    "@cycle/history": "^3.1.0",
     "@cycle/isolate": "^1.2.0",
+    "@cycle/xstream-run": "^1.1.0",
     "css-loader": "^0.23.1",
     "history": "^2.1.0",
     "ramda": "^0.21.0",
@@ -44,7 +44,8 @@
     "rx-combine-latest-obj": "^1.0.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
-    "switch-path": "^1.1.6"
+    "switch-path": "^1.1.7",
+    "xstream": "^2.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.7.7",

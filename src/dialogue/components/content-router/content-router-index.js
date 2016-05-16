@@ -1,5 +1,4 @@
 import switchPath from 'switch-path';
-import Rx         from 'rx';
 import isolate    from '@cycle/isolate';
 import Home       from 'pages/home/home-index';
 import Page1      from 'pages/page1/page1-index';
@@ -31,7 +30,7 @@ function ContentRouter(sources) {
       Comp: Component$,
       Props: Props$.share() // return our Props$ to current page/component
     };
-  }).shareReplay(1); // make sure sinks$ are hot
+  }).remember(); // make sure sinks$ is remembered
 
   return {
     DOM: sinks$.flatMapLatest(s => s.Comp.DOM),

@@ -1,10 +1,12 @@
-import {run}                from '@cycle/core';
+import {run}                from '@cycle/xstream-run';
 import {makeDOMDriver}      from '@cycle/dom';
 import {makeHistoryDriver}  from '@cycle/history';
-import {useQueries, createHistory} from 'history';
-import Rx                   from 'rx';
-import Main                  from './main'
-import {rerunner, restartable} from 'cycle-restart';
+import {useQueries,
+  createHistory}            from 'history';
+import xs                   from 'xstream';
+import Main                 from './main'
+import {rerunner,
+  restartable} from 'cycle-restart';
 
 // we are pulling in our css files here for webpack to compile
 require("!style!css!styles/pure-min.css");
@@ -18,7 +20,7 @@ const history = useQueries(createHistory)();
 const drivers = {
   DOM: makeDOMDriver('#application'),
   History: makeHistoryDriver(history),
-  Props: () => Rx.Observable.just(0)
+  Props: () => xs.of(0)
 };
 
 const rerun = rerunner(run);

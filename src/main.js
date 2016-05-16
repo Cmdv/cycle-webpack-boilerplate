@@ -1,4 +1,4 @@
-import Rx             from 'rx'
+import xs             from 'xstream';
 import navbar         from './dialogue/components/navbar/navbar-index'
 import contentRouter  from './dialogue/components/content-router/content-router-index'
 // @cycle/dom has a hyperscript-helper built in so you can
@@ -23,7 +23,7 @@ function main(sources) {
   const Nav = navbar(sources);
   const Props = Content.Props;
 
-  const view$ = Rx.Observable.just(
+  const view$ = xs.of(
     view(
       Nav.DOM,
       Content.DOM
