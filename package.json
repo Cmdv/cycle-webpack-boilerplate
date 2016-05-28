@@ -35,8 +35,9 @@
   "dependencies": {
     "@cycle/dom": "^10.0.0-rc21",
     "@cycle/history": "^3.1.0",
-    "@cycle/isolate": "^1.2.0",
+    "@cycle/isolate": "^1.2.1",
     "@cycle/xstream-run": "^1.1.0",
+    "cyclic-router": "^2.0.0",
     "css-loader": "^0.23.1",
     "history": "^2.1.0",
     "ramda": "^0.21.0",
