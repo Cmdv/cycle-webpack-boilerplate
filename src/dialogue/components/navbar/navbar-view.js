@@ -1,6 +1,6 @@
 import {h, div, ul, li, a, nav, h1, h2} from '@cycle/dom'
 import xs from 'xstream'
-function view (sources, route$) {
+function view (sources) {
 
   const {router} = sources;
 

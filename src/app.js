@@ -22,7 +22,6 @@ const history = supportsHistory()
 const drivers = {
   DOM: makeDOMDriver('#application', {transposition: true}),
   router: makeRouterDriver(...history),
-  // state$: makeStateDriver(),
 };
 
 const rerun = rerunner(run);

@@ -28,7 +28,8 @@ function ComponentRouter (sources) {
   return {
     pluck: key => component$.map(prop(key)).flatten(),
     DOM: component$.map(prop('DOM')).flatten(),
-    route$: component$.map(prop('route$')).flatten()
+    route$: component$.map(prop('route$')).flatten(),
+    state$: component$.map(prop('state$')).flatten(),
   }
 }
 

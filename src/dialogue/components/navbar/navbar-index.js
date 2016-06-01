@@ -1,8 +1,8 @@
 import view from './navbar-view'
 
-const navbar = (sources, path$) => {
+const navbar = (sources) => {
 
-  const view$ = view(sources, path$);
+  const view$ = view(sources);
   return {
     DOM: view$,
   }

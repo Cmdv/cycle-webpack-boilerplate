@@ -33,11 +33,14 @@ const routes = {
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
 function main(sources) {
-  const Content = ComponentRouter({...sources, routes$: xs.of(routes)})
 
-  const {route$, pluck} = Content;
-  const Nav = navbar(sources, route$);
+  const proxyState$ = xs.create()
 
+  const Content = ComponentRouter({...sources, routes$: xs.of(routes), state$: proxyState$.startWith({counter: 0})})
+
+  proxyState$.imitate(Content.state$.remember())
+
+  const Nav = navbar(sources);
 
   const view$ = xs.of(
     view(
@@ -48,7 +51,7 @@ function main(sources) {
 
   return {
     DOM: view$,
-    route$,
+    route$: Content.routes$,
     // state$: state$.startWith({counter:0})
   }
 };
