@@ -36,9 +36,14 @@ function main(sources) {
 
   const proxyState$ = xs.create()
 
-  const Content = ComponentRouter({...sources, routes$: xs.of(routes), state$: proxyState$.startWith({counter: 0})})
+  const Content = ComponentRouter(
+    {...sources,
+    routes$: xs.of(routes),
+    state$: proxyState$.startWith({counter: 0})
+    }
+  )
 
-  proxyState$.imitate(Content.state$.remember())
+  proxyState$.imitate(Content.state$)
 
   const Nav = navbar(sources);
 
@@ -52,7 +57,6 @@ function main(sources) {
   return {
     DOM: view$,
     route$: Content.routes$,
-    // state$: state$.startWith({counter:0})
   }
 };
 

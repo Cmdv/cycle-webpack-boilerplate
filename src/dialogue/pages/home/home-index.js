@@ -1,6 +1,6 @@
-import view   from './home-view'
-import intent from './home-intent'
-import model  from './home-model'
+import homeView   from './home-view'
+import homeIntent from './home-intent'
+import homeModel  from './home-model'
 
 
 // returning our DOM
@@ -8,11 +8,11 @@ const Home = (sources) => {
 
   const {state$} = sources;
 
-  const actions  = intent(sources);
-  const newState$  = model({...actions, state$});
+  const actions  = homeIntent(sources);
+  const newState$  = homeModel({...actions, state$});
 
   return {
-    DOM: view(newState$),
+    DOM: homeView(newState$),
     state$: newState$,
   }
 };
