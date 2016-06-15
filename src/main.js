@@ -32,32 +32,30 @@ const routes = {
 // creating this "cycle", here you can see that view$ is a Rx Observable containing out "view"
 // we pass view our nav.DOM + Content.DOM which you can see in const view above become available
 // variables. We return all of this in an Object with DOM + History
-function main(sources) {
+export default function main(sources) {
 
   const proxyState$ = xs.create()
 
-  const Content = ComponentRouter(
+  const page = ComponentRouter(
     {...sources,
     routes$: xs.of(routes),
     state$: proxyState$.startWith({counter: 0})
     }
   )
 
-  proxyState$.imitate(Content.state$)
+  proxyState$.imitate(page.state$)
 
   const Nav = navbar(sources);
 
   const view$ = xs.of(
     view(
       Nav.DOM,
-      Content.DOM
+      page.DOM
     )
   );
 
   return {
     DOM: view$,
-    route$: Content.routes$,
+    route$: page.routes$,
   }
 };
-
-export default main

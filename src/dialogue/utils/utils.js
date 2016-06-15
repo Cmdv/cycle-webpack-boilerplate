@@ -1,4 +1,4 @@
-import xs, {Stream} from 'xstream'
+import xs from 'xstream'
 import {forEach, map, propOr} from 'ramda'
 
 export function requireSources (componentName, sources, ...sourcesNames) {
@@ -10,17 +10,16 @@ export function requireSources (componentName, sources, ...sourcesNames) {
 }
 
 export function isStream (stream) {
-  return stream instanceof Stream
+  return typeof stream.addListener === 'function' &&
+    typeof stream.fold === 'function'
 }
 
 const propOrNever = propOr(xs.never())
-
 export function mergeFlatten (key, children) {
-  return xs.merge(
-    ...map(child => isStream(child)
-        ? child.map(propOrNever(key)).flatten()
-        : propOrNever(key, child)
-      , children
-    )
+  const streams = map(child => isStream(child)
+      ? child.map(propOrNever(key)).flatten()
+      : propOrNever(key, child)
+    , children
   )
+  return xs.merge(...streams)
 }

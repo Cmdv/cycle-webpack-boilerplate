@@ -1,3 +1,4 @@
+import isolate    from '@cycle/isolate'
 import homeView   from './home-view'
 import homeIntent from './home-intent'
 import homeModel  from './home-model'
@@ -17,4 +18,4 @@ const Home = (sources) => {
   }
 };
 
-export default Home
+export default sources => isolate(Home)(sources)
