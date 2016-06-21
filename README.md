@@ -19,6 +19,11 @@ npm install //install dependencies
 npm start //start webpack-dev-server with cycle + hot reload
 ```
 
+## Testing
+```
+npm run test-server
+```
+
 Open another terminal tab and then :
 
 ```javascript 
