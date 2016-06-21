@@ -21,7 +21,7 @@ npm start //start webpack-dev-server with cycle + hot reload
 
 ## Testing
 ```
-webpack --config webpack.test.config.js --watch
+npm run test-server
 ```
 
 Open another terminal tab and then :

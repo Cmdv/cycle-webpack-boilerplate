@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run server:dev",
     "server:dev": "./node_modules/.bin/webpack-dev-server --hot --config webpack.config.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+    "test-server": "./node_modules/.bin/webpack --config webpack.test.config.js --watch",
     "build": "webpack --progress --colors --config webpack.production.config.js",
     "clean": "rm -rf build/",
     "test": "testem"
