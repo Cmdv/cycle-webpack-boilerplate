@@ -39,7 +39,7 @@ For tests to run properlly and hot reloading, make sure you have both npm script
 
 [testem](https://github.com/airportyh/testem) - test runner
 
-[webpack](https://github.com/airportyh/testem) - a bundler for JavaScript
+[webpack](https://github.com/webpack/webpack) - a bundler for JavaScript
 
 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) - updates browsers on changes
 
