@@ -1,17 +1,21 @@
-import view   from './home-view'
-import intent from './home-intent'
-import model  from './home-model'
+import isolate    from '@cycle/isolate'
+import homeView   from './home-view'
+import homeIntent from './home-intent'
+import homeModel  from './home-model'
+
 
 // returning our DOM
 const Home = (sources) => {
-  const props$ = sources.Props;
-  const actions = intent(sources);
-  const state$ = model({...actions,props$});
+
+  const {state$} = sources;
+
+  const actions  = homeIntent(sources);
+  const newState$  = homeModel({...actions, state$});
 
   return {
-    DOM: view(state$),
-    Props: state$,
+    DOM: homeView(newState$),
+    state$: newState$,
   }
 };
 
-export default Home
+export default sources => isolate(Home)(sources)

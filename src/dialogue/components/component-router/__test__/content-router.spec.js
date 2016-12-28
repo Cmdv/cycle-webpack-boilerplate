@@ -3,7 +3,7 @@ import Rx                   from 'rx'
 import Cycle                from '@cycle/core'
 import {div, makeDOMDriver} from '@cycle/dom'
 import {makeHistoryDriver}  from '@cycle/history';
-import contentRouter        from '../content-router-index'
+import contentRouter        from '../component-router'
 import createRenderTarget   from '__test_helper__/createRenderTarget'
 
 const url = {

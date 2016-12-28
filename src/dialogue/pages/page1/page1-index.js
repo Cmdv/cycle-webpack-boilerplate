@@ -1,14 +1,29 @@
-import Rx   from 'rx'
-import view from './page1-view'
+import xs from 'xstream'
+import isolate from '@cycle/isolate'
+import {div, h1} from '@cycle/dom'
 
-const Page1 = (sources) => {
-  const props$ = sources.Props;
-  const $view = view(props$);
-
+function Page1 (sources) {
   return {
-    DOM: Rx.Observable.just($view),
-    Props: props$,
+    DOM: xs.of(
+      div({}, [
+        h1('.welcome', 'Page 1')
+      ]))
   }
-};
+}
 
-export default Page1
+export default sources => isolate(Page1)(sources)
+
+// import xs   from 'xstream';
+// import view from './page1-view'
+//
+// const Page1 = (sources) => {
+//   const props$ = sources.Props;
+//   const $view = view(props$);
+//
+//   return {
+//     DOM: xs.of($view),
+//     Props: props$,
+//   }
+// };
+//
+// export default Page1
